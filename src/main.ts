@@ -1,88 +1,46 @@
-// // Define character choices as an enum
-// enum CharacterChoice {
-//   Barbarian = 'barbarian',
-//   Mage = 'mage'
-// }
-
-// // Define scenarios and their corresponding messages
-// const scenarios: Record<CharacterChoice, string> = {
-//   [CharacterChoice.Barbarian]: 'You chose to be a barbarian. Unfortunately, you have met a fierce dragon and died.',
-//   [CharacterChoice.Mage]: 'Congratulations! You chose to be a mage. You have successfully cast a spell and won the game!',
-// };
-
-// function chooseAdventure(): void {
-//   console.log('Welcome to the Choose Your Own Adventure Game!\n');
-
-//   const rawCharacterChoice = window.prompt(
-//     'Choose your character: Type "barbarian" or "mage"'
-//   );
-
-//   if (!rawCharacterChoice) {
-//     console.log('Invalid choice. Refresh the page to try again.');
-//     return;
-//   }
-
-//   // Convert the user input to a CharacterChoice
-//   const characterChoice: CharacterChoice = rawCharacterChoice.toLowerCase() as CharacterChoice;
-
-//   switch (characterChoice) {
-//     case CharacterChoice.Barbarian:
-//       console.log(scenarios[CharacterChoice.Barbarian]);
-//       break;
-//     case CharacterChoice.Mage:
-//       console.log(scenarios[CharacterChoice.Mage]);
-//       break;
-//     default:
-//       console.log('Invalid choice. Refresh the page to try again.');
-//       break;
-//   }
-
-//   console.log('Thanks for playing! Goodbye.');
-// }
-
-// chooseAdventure();
+import chapterTwo from "./chapters/chaptertwo";
 
 // Define character choices as an enum
 enum CharacterChoice {
-  Barbarian = 'barbarian',
-  Mage = 'mage'
+  Barbarian = "barbarian",
+  Mage = "mage",
 }
 
 enum WeaponChoice {
-  Sword = 'sword',
-  Wand = 'wand'
+  Sword = "sword",
+  Wand = "wand",
 }
 
-let playerObject = {
+export let playerObject = {
   name: null as string | null,
   playerClass: CharacterChoice.Barbarian || CharacterChoice.Mage,
-  playerWeapon: WeaponChoice.Sword || WeaponChoice.Wand
-}
-
+  playerWeapon: WeaponChoice.Sword || WeaponChoice.Wand,
+};
 
 function chooseAdventure(): void {
-  console.log('Welcome to the Choose Your Own Adventure Game!\n');
+  alert("Welcome to the Choose Your Own Adventure Game!\n");
 
   // Ask the user for their name, push to the player object
-  const playerName = window.prompt('Enter your name:')
+  const playerName = window.prompt("Enter your name:");
   playerObject.name = playerName;
 
   // Alert, welcome the user
   alert(`Welcome ${playerObject.name}!`);
 
-// Prompt the user to choose their character
-const rawCharacterChoice = window.prompt(
+  // Prompt the user to choose their character
+  const rawCharacterChoice = window.prompt(
     'Choose your character: Type "barbarian" or "mage"'
   );
 
-if (!rawCharacterChoice) {
-    alert('Invalid choice. Refresh the page to try again.');
+  if (!rawCharacterChoice) {
+    alert("Invalid choice. Refresh the page to try again.");
     return;
   }
 
-const characterChoice: CharacterChoice = rawCharacterChoice.toLowerCase() as CharacterChoice;
+  const characterChoice: CharacterChoice =
+    rawCharacterChoice.toLowerCase() as CharacterChoice;
 
-switch (characterChoice) {
+  switch (characterChoice) {
     case CharacterChoice.Barbarian:
       playerObject.playerClass = characterChoice;
       console.log(playerObject);
@@ -92,7 +50,7 @@ switch (characterChoice) {
       console.log(playerObject);
       break;
     default:
-      console.log('Invalid choice. Refresh the page to try again.');
+      console.log("Invalid choice. Refresh the page to try again.");
       break;
   }
 
@@ -102,11 +60,12 @@ switch (characterChoice) {
   );
 
   if (!rawWeaponChoice) {
-    alert('Invalid choice. Refresh the page to try again.');
+    alert("Invalid choice. Refresh the page to try again.");
     return;
   }
 
-  const weaponChoice: WeaponChoice = rawWeaponChoice.toLowerCase() as WeaponChoice;
+  const weaponChoice: WeaponChoice =
+    rawWeaponChoice.toLowerCase() as WeaponChoice;
 
   switch (weaponChoice) {
     case WeaponChoice.Sword:
@@ -118,11 +77,38 @@ switch (characterChoice) {
       console.log(playerObject);
       break;
     default:
-      console.log('Invalid choice. Refresh the page to try again.');
+      console.log("Invalid choice. Refresh the page to try again.");
       break;
   }
 
-  console.log('Thanks for playing! Goodbye.');
-}
+  alert(
+    `Brave ${playerObject.name} the ${playerObject.playerClass}, armed with your ${playerObject.playerWeapon}! Get ready to set off on your journey.`
+  );
 
+  const pathChoice: string | null = window.prompt(
+    "You are walking through the forest when you come across a fork in the road. Path 1 leads into the bushes. Path 2 leads to the town. Path 3 leads to the cave. Which number path would you like to follow?"
+  );
+
+  if (!pathChoice) {
+    alert("Invalid choice. Refresh the page to try again.");
+    return;
+  }
+
+  switch (pathChoice) {
+    case pathChoice === "one" || "1":
+      alert(
+        "You stumble through the bushes, only to find a cliff on the other side. You lose your footing and fall to your death. A messagenger has been dispatched to inform your loved ones of your unfortunate demise. Game over."
+      );
+      break;
+    case pathChoice === "two" || "2":
+      chapterTwo(playerObject);
+      break;
+    case pathChoice === "three" || "3":
+      playerObject.playerWeapon = weaponChoice;
+      break;
+    default:
+      console.log("Invalid choice. Refresh the page to try again.");
+      break;
+  }
+}
 chooseAdventure();
