@@ -1,4 +1,4 @@
-import chapterTwo from "./chapters/chaptertwo";
+import { chapterTwo, chapterTwoPathThree } from "./chapters/chaptertwo.ts";
 
 // Define character choices as an enum
 enum CharacterChoice {
@@ -101,10 +101,10 @@ function chooseAdventure(): void {
       );
       break;
     case pathChoice === "two" || "2":
-      chapterTwo(playerObject);
+      chapterTwo();
       break;
     case pathChoice === "three" || "3":
-      playerObject.playerWeapon = weaponChoice;
+      chapterTwoPathThree();
       break;
     default:
       console.log("Invalid choice. Refresh the page to try again.");
