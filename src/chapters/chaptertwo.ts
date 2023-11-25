@@ -7,7 +7,7 @@ export function chapterTwo(): void {
 
   if (playerObject.playerWeapon == "sword") {
     alert(
-      "You start hacking away at the vines with your sword but the magic skin proves too tough. The creature pulls you in towards itself and doon you are enveloped, never to be seen again. Game over."
+      "You start hacking away at the vines with your sword but the magic skin proves too tough. The creature pulls you in towards itself and soon you are enveloped, never to be seen again. Game over."
     );
   } else if (playerObject.playerWeapon == "wand") {
     alert(
@@ -23,7 +23,7 @@ export function chapterTwoPathThree(): void {
 
   if (playerObject.playerWeapon == "sword") {
     alert(
-      "A harrard looking ogre appears from the darkness and tries to grab your face. You push him back and bury your swords blade deep into his belly. You win."
+      "A harrard looking ogre appears from the darkness and tries to grab your face. You push him back and bury your blade deep into his belly, killing him. You win."
     );
   } else if (playerObject.playerWeapon == "wand") {
     alert(
